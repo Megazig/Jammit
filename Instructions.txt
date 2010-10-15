@@ -1,0 +1,117 @@
+Group 1 - Set All Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+STAF
+SUAI
+
+Group 2 - Set Unique Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+SETU
+
+Group 3 - ???????????????????
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+CLRU
+
+Group 4 - ???????????????????
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+CLAS	- returns 0 when decoding instruction
+
+Group 5 - Get Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+DITD
+
+Group 6 - Get Index Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+DIQI
+DIQF
+GLEF	<= float
+GLEI	<= int
+GLTF	< float
+GLTI	< int
+GLQF
+GGTF	> float
+GGTI	> int
+GGEF	>= float
+GGEI	>= int
+GNQI
+
+Group 7 - Get Input Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+GETV
+
+Group 8 - Get Unique Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+DITU
+
+Group 9 - Set Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+SETD
+
+Group 10 - Set Unique Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+SETU
+
+Group 11 - Count Unique Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+CSTU
+
+Group 12 - Increment Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+IDTI
+IDTF
+
+Group 13 - Multi Function Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+AEQF	== float
+AEQI	== int
+AGEF	>= float
+AGEF	>= float **repeat**
+AGEI	>= int
+AGTF	> float
+AGTI	> int
+ALEI	<= int
+ANQF	!= float ???
+ANQI	!= int ???
+ANTF
+ANTI
+OEQF	== float
+OGEF	>= float
+OGEI	>= int
+OGEF	>= float **repeat**
+OGEI	>= int **repeat**
+OGQI
+OGTF	> float
+OGTF	> float **repeat**
+OGTI	> int
+OLTI	< int
+ONQF	!= float ???
+ONQI	!= int ???
+
+Group 14 - Function Expression
+-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
+ADDF	+ float
+ADDI	+ int
+CEQF	== float
+CEEF
+CEQI	== int
+CEEI
+CEQI	== int **repeat**
+CGTF	> float
+CLEF	<= float
+CLEI	<= int
+CLTF	< float
+CLTI	< int
+CLTI	< int **repeat**
+CLQF
+CSTF
+CSTI
+CSVF
+DIVI	divide int
+MAXF	max float
+MAXI	max int
+MINF	min float
+MULF	multiply float
+MULI	multiply int
+MUNI
+SUBF	- float
+SUBI	- int
+
