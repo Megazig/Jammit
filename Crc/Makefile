@@ -1,5 +1,5 @@
 CC			:= gcc
-CFLAGS		:= -O2 -Wall -Werror -Wextra
+CFLAGS		:= -g -O2 -Wall -Werror -Wextra
 FILES		:= crc.c
 OUTPUT		:= $(notdir $(CURDIR))
 

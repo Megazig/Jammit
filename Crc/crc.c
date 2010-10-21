@@ -1,5 +1,5 @@
 /*
- *
+ i
  *		by megazig
  *		All Rights Reserved
  *
@@ -98,6 +98,39 @@ int GetSaveCRC(u8* ptr, int length, int hash, int not) {
 	return hash;
 }
 
+u32 FillJunk(u8* buffer, int length, int hash) {
+	u32 i=0;
+	for(i=0; i != 0xffffffff; i++) {
+		*(u32*)(buffer+length-4) = i;
+		int calc = GetSaveCRC(buffer, length, -1, 1);
+		if(calc == hash)
+			return i;
+		printf("i: 0x%08x\n", i);
+	}
+	return 0;
+}
+
+u32 FindStart(u8* buffer, u32 off, u32 hash) {
+	u32 i, s;
+	for(i=off, s=4; i>0; i-=4, s+=4) {
+		int calc = GetSaveCRC(buffer+i, s, -1, 1);
+		if(*(u32*)(&calc) == hash)
+			return i;
+	}
+	return 0xffffffff;
+}
+
+u32 FindEnd(u8* buffer, u32 off, u32 length) {
+	u32 i;
+	int s;
+	for(i=off, s=4; i<length-4; i+=4, s+=4) {
+		int calc = GetSaveCRC(buffer+off, s, -1, 1);
+		if(*(u32*)(&calc) == Read32(buffer+i+4))
+			return i;
+	}
+	return 0xffffffff;
+}
+
 void ShowUsage(char ** argv) {
 	printf("Usage: %s <savefile>\n", argv[0]);
 }
@@ -131,6 +164,51 @@ int main(int argc, char ** argv) {
 	Write32(buffer + 0x44, 0);
 	printf("Header CRC: %08x (should be %08x)\n", GetSaveCRC(buffer, 0x80, -1, 1), HeaderCRC);
 	printf("Data CRC:   %08x (should be %08x)\n", GetSaveCRC(buffer+0x80, 0x2ff20, -1, 1), DataCRC);
+
+	//u32 hash_off;
+#if 0
+	hash_off = 0x2ff98;
+	u32 SomeCRC = Read32(buffer + hash_off);
+	u32 start = FindStart(buffer, hash_off-4, SomeCRC);
+	if(start != 0xffffffff)
+		printf("Start Section: %08x : %08x\n", start, SomeCRC);
+#endif
+
+#if 0
+	hash_off = 0x287a0;
+	u32 end = FindEnd(buffer, hash_off, length);
+	if(end != 0xffffffff)
+		printf("End Section: %08x\n", end);
+#endif
+
+	u32 Some1CRC = Read32(buffer + 0x271c);
+	printf("DB1 CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x7a0, 0x1f7c, -1, 1),
+			Some1CRC);
+	u32 Some2CRC = Read32(buffer + 0x1ecb4);
+	printf("DB2 CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x2fa0, 0x1bd14, -1, 1),
+			Some2CRC);
+	u32 OverachieverCRC = Read32(buffer + 0x1ecc8);
+	printf("Overachiever CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x1ecbc, 0xc, -1, 1),
+			OverachieverCRC);
+	u32 GameSettingsCRC = Read32(buffer + 0x1ed28);
+	printf("GameSettings CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x1ecd0, 0x58, -1, 1),
+			GameSettingsCRC);
+	u32 GCML = Read32(buffer + 0x1ed2c);
+	u32 GameConfigManagerCRC = Read32(buffer + 0x1ed30 + GCML);
+	printf("GameConfigManager CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x1ed30, GCML, -1, 1),
+			GameConfigManagerCRC);
+	u32 Some3CRC = Read32(buffer + 0x2d0ec);
+	printf("DB3 CRC:   %08x (should be %08x)\n",
+			GetSaveCRC(buffer+0x287a0, 0x494c, -1, 1),
+			Some3CRC);
+#if 0
+	printf("DB3 Junk:%08x\n",FillJunk1(buffer,0x494c,Some3CRC));
+#endif
 
 	free(buffer);
 	return EXIT_SUCCESS;
