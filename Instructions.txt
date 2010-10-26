@@ -1,11 +1,11 @@
 Group 1 - Set All Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-STAF
-STAI
+STAF	Set All Float
+STAI	Set All Int
 
 Group 2 - Set Unique Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-SETU
+SETU	Set Unique
 
 Group 3 - ???????????????????
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
@@ -17,7 +17,7 @@ CLAS	- returns 0 when decoding instruction
 
 Group 5 - Get Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-GETD
+GETD	Get Data
 
 Group 6 - Get Index Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
@@ -40,15 +40,15 @@ GETV
 
 Group 8 - Get Unique Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-GETU
+GETU	Get Unique
 
 Group 9 - Set Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-SETD
+SETD	Set Data
 
 Group 10 - Set Unique Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-SETU
+SETU	Set Unique
 
 Group 11 - Count Unique Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
@@ -56,8 +56,8 @@ CSTU
 
 Group 12 - Increment Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
-IDTI
-IDTF
+IDTF	Increment Data Float
+IDTI	Increment Data Integer
 
 Group 13 - Multi Function Expression
 -=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-
